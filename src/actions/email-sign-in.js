@@ -39,7 +39,9 @@ export function emailSignIn(body, endpointKey) {
     return fetch(getEmailSignInUrl(currentEndpointKey), {
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": "5d5c82fa2e6749f58a6a8053ba91edbf",
+        "x-mock-response-code": "200"
       },
       method: "post",
       body: JSON.stringify(body)
