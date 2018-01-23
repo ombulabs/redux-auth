@@ -111,7 +111,7 @@ export function getSignOutUrl (endpointKey) {
 }
 
 export function getEmailSignInUrl (endpointKey) {
-  return `${getApiUrl(endpointKey)}${getSessionEndpoint(endpointKey).emailSignInPath}`
+  return `${process.env.API_URL}${getSessionEndpoint(endpointKey).emailSignInPath}`
 }
 
 export function getEmailSignUpUrl (endpointKey) {

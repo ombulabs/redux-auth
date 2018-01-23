@@ -64,7 +64,7 @@ module.exports = {
   ],
   plugins: [
     new webpack.DefinePlugin({__CLIENT__: true, __SERVER__: false}),
-    new webpack.DefinePlugin({"process.env": {NODE_ENV: "\"production\""}}),
+    new webpack.DefinePlugin({"process.env": {NODE_ENV: "\"production\"", API_URL: "\"https://0faeb3f0-9907-4a5b-876d-a91fea376d6e.mock.pstmn.io\""}}),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin()
