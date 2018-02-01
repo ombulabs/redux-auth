@@ -20,7 +20,13 @@ export function signOut(endpoint) {
   return dispatch => {
     dispatch(signOutStart(endpoint));
 
-    return fetch(getSignOutUrl(endpoint), {method: "delete"})
+    return fetch(getSignOutUrl(endpoint), {
+      method: "delete",
+      headers: {
+        "x-api-key": "5d5c82fa2e6749f58a6a8053ba91edbf",
+        "x-mock-response-code": "200"
+      },
+    })
       .then(parseResponse)
       .then((user) => {
         dispatch(signOutComplete(endpoint, user))
