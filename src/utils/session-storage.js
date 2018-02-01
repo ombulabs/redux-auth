@@ -107,7 +107,7 @@ export function getDestroyAccountUrl (endpointKey) {
 
 // only should work for current session
 export function getSignOutUrl (endpointKey) {
-  return `${getApiUrl(endpointKey)}${getSessionEndpoint(endpointKey).signOutPath}`
+  return `${process.env.API_URL}${getSessionEndpoint(endpointKey).signOutPath}`
 }
 
 export function getEmailSignInUrl (endpointKey) {
