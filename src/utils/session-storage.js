@@ -123,7 +123,7 @@ export function getPasswordResetRequestUrl (endpointKey) {
 }
 
 export function getPasswordUpdateUrl (endpointKey) {
-  return `${getApiUrl(endpointKey)}${getSessionEndpoint(endpointKey).passwordUpdatePath}`
+  return `${process.env.API_URL}${getSessionEndpoint(endpointKey).passwordUpdatePath}`
 }
 
 export function getTokenValidationPath (endpointKey) {
