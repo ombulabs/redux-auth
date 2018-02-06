@@ -26,7 +26,9 @@ export function updatePassword(body, endpoint) {
     return fetch(getPasswordUpdateUrl(endpoint), {
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": "5d5c82fa2e6749f58a6a8053ba91edbf",
+        "x-mock-response-code": "200"
       },
       method: "put",
       body: JSON.stringify(body)
