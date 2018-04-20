@@ -41,7 +41,8 @@ export function emailSignIn(body, endpointKey) {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "x-api-key": "5d5c82fa2e6749f58a6a8053ba91edbf",
-        "x-mock-response-code": "200"
+        "x-mock-response-code": "200",
+        "Access-Control-Allow-Origin": "*"
       },
       method: "post",
       body: JSON.stringify(body)
