@@ -2,19 +2,19 @@ var webpack = require("webpack");
 var path = require("path");
 
 module.exports = {
-  target:  "web",
-  cache:   false,
+  target: "web",
+  cache: false,
   context: __dirname,
   devtool: false,
-  entry:   {
-    "index":             "./src/index",
-    "bootstrap-theme":   "./src/views/bootstrap/index",
-    "default-theme":     "./src/views/default/index",
+  entry: {
+    index: "./src/index",
+    "bootstrap-theme": "./src/views/bootstrap/index",
+    "default-theme": "./src/views/default/index",
     "material-ui-theme": "./src/views/material-ui/index"
   },
-  output:  {
-    path:          path.join(__dirname),
-    filename:      "[name].js",
+  output: {
+    path: path.join(__dirname),
+    filename: "[name].js",
     libraryTarget: "commonjs"
   },
   externals: [
@@ -24,70 +24,85 @@ module.exports = {
       } else {
         cb();
       }
-    }, {
-      "react": "commonjs react",
-      "classnames": "commonjs classnames",
+    },
+    {
+      react: "commonjs react",
+      classnames: "commonjs classnames",
       "browser-cookies": "commonjs browser-cookies",
-      "cookie": "commonjs cookie",
-      "extend": "commonjs extend",
-      "history": "commonjs history",
-      "immutable": "commonjs immutable",
+      cookie: "commonjs cookie",
+      extend: "commonjs extend",
+      history: "commonjs history",
+      immutable: "commonjs immutable",
       "isomorphic-fetch": "commonjs isomorphic-fetch",
       "query-string": "commonjs query-string",
-      "querystring": "commonjs querystring",
+      querystring: "commonjs querystring",
       "react-dom": "commonjs react-dom",
       "react-redux": "commonjs react-redux",
-      "redux": "commonjs redux",
-      "lodash": "commonjs lodash",
+      redux: "commonjs redux",
+      lodash: "commonjs lodash",
       "redux-immutablejs": "commonjs redux-immutablejs",
       "react-router": "commonjs react-router",
       "react-router-redux": "commonjs react-router-redux",
       "redux-thunk": "commonjs redux-thunk",
-      "thunk": "commonjs thunk",
+      thunk: "commonjs thunk",
       "rc-dialog": "commonjs rc-dialog",
       "react-loader": "commonjs react-loader",
-      "url": "commonjs url",
+      url: "commonjs url",
       "react-bootstrap": "commonjs react-bootstrap",
       "material-ui/Dialog": "commonjs material-ui/Dialog",
       "material-ui/RaisedButton": "commonjs material-ui/RaisedButton",
       "material-ui/FlatButton": "commonjs material-ui/FlatButton",
       "material-ui/TextField": "commonjs material-ui/TextField",
       "material-ui/styles/colors": "commonjs material-ui/styles/colors",
-      "material-ui/styles/MuiThemeProvider": "commonjs material-ui/styles/MuiThemeProvider",
-      "material-ui/svg-icons/action/exit-to-app": "commonjs material-ui/svg-icons/action/exit-to-app",
-      "material-ui/svg-icons/action/favorite": "commonjs material-ui/svg-icons/action/favorite",
-      "material-ui/svg-icons/action/delete": "commonjs material-ui/svg-icons/action/delete",
-      "material-ui/svg-icons/content/send": "commonjs material-ui/svg-icons/content/send",
-      "material-ui/svg-icons/action/lock": "commonjs material-ui/svg-icons/action/lock",
-      "material-ui/svg-icons/alert/error": "commonjs material-ui/svg-icons/alert/error"
+      "material-ui/styles/MuiThemeProvider":
+        "commonjs material-ui/styles/MuiThemeProvider",
+      "material-ui/svg-icons/action/exit-to-app":
+        "commonjs material-ui/svg-icons/action/exit-to-app",
+      "material-ui/svg-icons/action/favorite":
+        "commonjs material-ui/svg-icons/action/favorite",
+      "material-ui/svg-icons/action/delete":
+        "commonjs material-ui/svg-icons/action/delete",
+      "material-ui/svg-icons/content/send":
+        "commonjs material-ui/svg-icons/content/send",
+      "material-ui/svg-icons/action/lock":
+        "commonjs material-ui/svg-icons/action/lock",
+      "material-ui/svg-icons/alert/error":
+        "commonjs material-ui/svg-icons/alert/error"
     }
   ],
   plugins: [
-    new webpack.DefinePlugin({__CLIENT__: true, __SERVER__: false}),
-    new webpack.DefinePlugin({"process.env": {NODE_ENV: "\"production\"", API_URL: "\"https://0faeb3f0-9907-4a5b-876d-a91fea376d6e.mock.pstmn.io\""}}),
+    new webpack.DefinePlugin({ __CLIENT__: true, __SERVER__: false }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: '"production"',
+        API_URL: '"http://localhost:9000"'
+      }
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ],
-  module:  {
+  module: {
     loaders: [
       { include: /\.json$/, loaders: ["json"] },
-      { include: /\.js$/, loaders: ["babel?cacheDirectory&presets[]=es2015&presets[]=react&presets[]=stage-0"], exclude: /node_modules/ }
+      {
+        include: /\.js$/,
+        loaders: [
+          "babel?cacheDirectory&presets[]=es2015&presets[]=react&presets[]=stage-0"
+        ],
+        exclude: /node_modules/
+      }
     ]
   },
   resolve: {
     alias: {
       react: path.join(__dirname, "node_modules/react")
     },
-    modulesDirectories: [
-      "src",
-      "node_modules",
-      "web_modules"
-    ],
+    modulesDirectories: ["src", "node_modules", "web_modules"],
     extensions: ["", ".json", ".js"]
   },
-  node:    {
+  node: {
     __dirname: true,
-    fs:        "empty"
+    fs: "empty"
   }
 };
